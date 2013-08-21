@@ -11,6 +11,5 @@
     - source: salt://resolver/files/resolv.conf
     - template: jinja
     - defaults:
-        domainname: 'example.com'
         nameservers: ['8.8.8.8','8.8.4.4']
         searchpath: 'example.com'
