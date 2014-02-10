@@ -1,34 +1,21 @@
+====
 resolver
-========
+====
 
-This SaltStack formula allows to update /etc/resolv.conf on minions.
-How to use it:
+State for update /etc/resolv.conf according to your settings
 
-1. Add git fileserver backend to your master config:
+.. note::
 
-.. code-block:: yaml
+    See the full `Salt Formulas installation and usage instructions
+    <http://docs.saltstack.com/topics/conventions/formulas.html>`_.
 
-  fileserver_backend:
-    - roots
-    - git
+Available states
+================
 
-2. Add formula git URL to gitfs_remotes in your master config:
+.. contents::
+    :local:
 
-.. code-block:: yaml
+``resolver``
+---------------
 
-  gitfs_remotes:
-    - git+ssh://git@github.com/saltstack-formulas/resolver-formula.git
-
-3. Extend formula by your settings:
-
-.. code-block:: yaml
-
-  include:
-    - resolver
-  extend:
-    /etc/resolv.conf:
-      file.managed:
-        - context:
-            searchpath: your.domain.name
-            nameservers:
-              - 192.168.1.1
+Manage /etc/resolv.conf
