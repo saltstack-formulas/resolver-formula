@@ -3,13 +3,11 @@
 #####################################
 
 # Resolver Configuration
-/etc/resolv.conf:
+resolver:
   file.managed:
+    - name: /etc/resolv.conf
     - user: root
     - group: root
     - mode: '0644'
-    - source: salt://resolver/files/resolv.conf
     - template: jinja
-    - defaults:
-        nameservers: ['8.8.8.8','8.8.4.4']
-        searchpath: 'example.com'
+    - source: salt://resolver/files/resolv.conf
