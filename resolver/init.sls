@@ -12,4 +12,4 @@
     - template: jinja
     - defaults:
         nameservers: {{ salt['pillar.get']('resolver:nameservers', ['8.8.8.8','8.8.4.4']) }}
-        searchpath: {{ salt['pillar.get']('resolver:searchpath', 'example.com') }}
+        searchpaths: {{ salt['pillar.get']('resolver:searchpaths', 'example.com') }}
