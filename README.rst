@@ -24,7 +24,9 @@ How to use it:
 .. code-block:: yaml
 
   resolver:
-    searchpath: example.com
+    searchpaths:
+      - example.com
+      - example.org
     nameservers:
       - 8.8.8.8
       - 4.4.4.4
