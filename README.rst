@@ -19,16 +19,12 @@ How to use it:
   gitfs_remotes:
     - git+ssh://git@github.com/saltstack-formulas/resolver-formula.git
 
-3. Extend formula by your settings:
+3. Add a pillar with your configuration items
 
 .. code-block:: yaml
 
-  include:
-    - resolver
-  extend:
-    /etc/resolv.conf:
-      file.managed:
-        - context:
-            searchpath: your.domain.name
-            nameservers:
-              - 192.168.1.1
+  resolver:
+    searchpath: example.com
+    nameservers:
+      - 8.8.8.8
+      - 4.4.4.4
