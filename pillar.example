@@ -1,5 +1,7 @@
 resolver:
-  searchpaths: example.com
+  searchpaths:
+    - example.com
+    - example.org
   nameservers:
     - 8.8.8.8
     - 4.4.4.4
