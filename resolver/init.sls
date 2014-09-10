@@ -11,5 +11,5 @@
     - source: salt://resolver/files/resolv.conf
     - template: jinja
     - defaults:
-        nameservers: ['8.8.8.8','8.8.4.4']
-        searchpath: 'example.com'
+        nameservers: {{ salt['pillar.get']('resolver:nameservers', ['8.8.8.8','8.8.4.4']) }}
+        searchpath: {{ salt['pillar.get']('resolver:searchpath', 'example.com') }}
