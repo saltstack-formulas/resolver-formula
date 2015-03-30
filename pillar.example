@@ -9,3 +9,9 @@ resolver:
     - 'rotate'
     - 'timeout:1'
     - 'attempts:5'
+
+## optionally specify what package to remove and what file to write
+
+#  lookup:
+#    path: /etc/resolv.conf
+#    package: resolvconf

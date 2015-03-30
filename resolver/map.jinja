@@ -1,0 +1,8 @@
+{% set resolver = salt['grains.filter_by']({
+  'default': {
+    'package': None
+  },
+  'Debian' : {
+    'package': 'resolvconf'
+  }
+}, merge=salt['pillar.get']('resolver:lookup'), default='default') %}
