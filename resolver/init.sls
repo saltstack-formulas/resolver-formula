@@ -7,7 +7,7 @@
 # Resolver Configuration
 resolver:
   pkg.removed:
-    - name: {{resolver.package}}
+    - name: {{ resolver.package }}
 
 /etc/resolv.conf:
   file.managed:
