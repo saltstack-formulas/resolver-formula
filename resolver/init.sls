@@ -12,5 +12,5 @@
     - template: jinja
     - defaults:
         nameservers: {{ salt['pillar.get']('resolver:nameservers', ['8.8.8.8','8.8.4.4']) }}
-        searchpaths: {{ salt['pillar.get']('resolver:searchpaths', salt['grains.get']('domain')) }}
+        searchpaths: {{ salt['pillar.get']('resolver:searchpaths', [salt['grains.get']('domain'),]) }}
         options: {{ salt['pillar.get']('resolver:options', []) }}
