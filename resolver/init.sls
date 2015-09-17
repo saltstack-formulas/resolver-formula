@@ -2,7 +2,7 @@
 ##### Salt Formula For Resolver #####
 #####################################
 
-{% set resolvconf = 0 == salt['cmd.retcode']('test -f /sbin/resolvconf') %}
+{% set resolvconf = salt['pkg.version']('resolvconf') %}
 
 # Resolver Configuration
 resolv-file:
