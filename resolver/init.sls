@@ -2,12 +2,12 @@
 ##### Salt Formula For Resolver #####
 #####################################
 
-{% set resolvconf = salt['pkg.version']('resolvconf') %}
+{% set is_resolvconf_enabled = grains['os'] == 'Ubuntu' and salt['pkg.version']('resolvconf') %}
 
 # Resolver Configuration
 resolv-file:
   file.managed:
-    {% if resolvconf %}
+    {% if is_resolvconf_enabled %}
     - name: /etc/resolvconf/resolv.conf.d/base
     {% else %}
     - name: /etc/resolv.conf
@@ -22,7 +22,7 @@ resolv-file:
         searchpaths: {{ salt['pillar.get']('resolver:searchpaths', [salt['grains.get']('domain'),]) }}
         options: {{ salt['pillar.get']('resolver:options', []) }}
 
-{% if resolvconf %}
+{% if is_resolvconf_enabled %}
 resolv-update:
   cmd.run:
     - name: resolvconf -u
