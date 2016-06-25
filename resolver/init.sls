@@ -21,6 +21,7 @@ resolv-file:
         nameservers: {{ salt['pillar.get']('resolver:nameservers', ['8.8.8.8','8.8.4.4']) }}
         searchpaths: {{ salt['pillar.get']('resolver:searchpaths', [salt['grains.get']('domain'),]) }}
         options: {{ salt['pillar.get']('resolver:options', []) }}
+        domain: {{ salt['pillar.get']('resolver:domain') }}
 
 {% if is_resolvconf_enabled %}
 resolv-update:

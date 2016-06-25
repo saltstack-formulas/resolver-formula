@@ -1,4 +1,5 @@
 resolver:
+  domain: example.com
   searchpaths:
     - example.com
     - example.org
