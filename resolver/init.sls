@@ -3,18 +3,20 @@
 #####################################
 
 {% if salt['pillar.get']('resolver:use_resolvconf', True) %}
-  {% set is_resolvconf_enabled = grains['os'] == 'Ubuntu' and salt['pkg.version']('resolvconf') %}
+  {% set is_resolvconf_enabled = grains['os'] in ('Ubuntu', 'Debian') and salt['pkg.version']('resolvconf') %}
 {% else %}
   {% set is_resolvconf_enabled = False %}
 {% endif %}
 
-{% if not is_resolvconf_enabled %}
-resolvconf-purge:
+resolvconf-manage:
+  {% if is_resolvconf_enabled %}
+  pkg.installed:
+  {% else %}
   pkg.purged:
+  {% endif %}
     - name: resolvconf
     - require_in:
       - file: resolv-file
-{% endif %}
 
 # Resolver Configuration
 resolv-file:
