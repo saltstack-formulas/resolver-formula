@@ -18,6 +18,18 @@ resolvconf-manage:
     - require_in:
       - file: resolv-file
 
+{%- if not is_resolvconf_enabled %}
+remove-symlink:
+  file.absent:
+    - name: /etc/resolv.conf
+    - require:
+      - resolvconf-manage
+    - require_in:
+        - resolv-file
+    - onchanges:
+      - resolvconf-manage
+{%- endif %}
+
 # Resolver Configuration
 resolv-file:
   file.managed:
