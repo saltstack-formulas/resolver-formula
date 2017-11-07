@@ -1,0 +1,16 @@
+{% set resolver = salt['grains.filter_by'](
+    {
+        'default': {
+            'conf_path': '/run/resolvconf/resolv.conf',
+        },
+        'Debian': {
+            'conf_path': '/etc/resolvconf/run/resolv.conf',
+        },
+        'Ubuntu': {
+            'conf_path': '../run/resolvconf/resolv.conf',
+        }
+    },
+    grain='os',
+    base='default',
+    merge=salt['pillar.get']('resolver')
+) %}
