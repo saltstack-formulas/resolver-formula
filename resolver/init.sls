@@ -1,6 +1,7 @@
 #####################################
 ##### Salt Formula For Resolver #####
 #####################################
+{% from slspath + "/map.jinja" import resolver with context %}
 
 {% if salt['pillar.get']('resolver:use_resolvconf', True) %}
   {% set is_resolvconf_enabled = grains['os_family'] in ('Debian') %}
@@ -39,6 +40,11 @@ resolv-file:
 
 {% if is_resolvconf_enabled %}
 resolv-update:
+  file.symlink:
+    - name: /etc/resolv.conf
+    - target: {{ resolver.conf_path }}
+    - force: True
+
   cmd.run:
     - name: resolvconf -u
     - onchanges:
