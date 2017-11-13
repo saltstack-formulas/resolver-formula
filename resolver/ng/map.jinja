@@ -1,0 +1,33 @@
+{% import_yaml "resolver/defaults.yaml" as cfg %}
+
+# Main defaults.
+{% set defaults = cfg.Defaults %}
+
+# os_family grain vars.
+{% set os_family_vars = salt['grains.filter_by'](
+    cfg,
+    grain='os_family',
+) %}
+
+# os grain vars.
+{% set os_vars = salt['grains.filter_by'](
+    cfg,
+    grain='os',
+) %}
+
+# Update grains vars.
+{% for var in [os_family_vars, os_vars] %}
+    {% do salt['defaults.merge'](defaults, var) %}
+{% endfor %}
+
+# Update dynamic vars.
+{% do defaults.update({
+    'domain': salt['grains.get']('domain')
+}) %}
+
+# Final var merged with pillar.
+{% set resolver = salt['pillar.get'](
+   'resolver',
+   default=defaults,
+   merge=True,
+) %}
