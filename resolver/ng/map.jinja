@@ -17,11 +17,11 @@
 
 # Update grains vars.
 {% for var in [os_family_vars, os_vars] %}
-    {% do salt['defaults.merge'](defaults, var) %}
+    {% do salt['defaults.merge'](defaults, var|default({}, True)) %}
 {% endfor %}
 
 # Update dynamic vars.
-{% do defaults.update({
+{% do salt['defaults.merge'](defaults, {
     'domain': salt['grains.get']('domain')
 }) %}
 
