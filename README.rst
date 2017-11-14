@@ -1,7 +1,7 @@
 ========
 resolver
 ========
-SaltStack formula to manage /etc/resolv.conf with or without `resolvconf`.
+SaltStack formula to manage ``/etc/resolv.conf`` with or without ``resolvconf``.
 
 .. Note::
 
@@ -17,13 +17,13 @@ Available states
 ``resolver``
 ------------
 
-Manage entries inside `/etc/resolv.conf`.
+Manage system nameserver information in ``/etc/resolv.conf``.
 
 Configuration
 =============
 
-The `resolvconf` package is enabled by default for Debian based distributions
-and you can manage `/etc/resolv.conf` directly without remove `resolvconf` package.
+The ``resolvconf`` package is enabled by default for Debian based distributions
+and you can manage ``/etc/resolv.conf`` directly without remove ``resolvconf`` package.
 
 
 .. code:: yaml
