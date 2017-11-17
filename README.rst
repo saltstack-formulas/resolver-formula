@@ -19,6 +19,11 @@ Available states
 
 Manage system nameserver information in ``/etc/resolv.conf``.
 
+``resolver.ng``
+------------
+
+A new formula to manage system nameserver information in ``/etc/resolv.conf``.
+
 Configuration
 =============
 
