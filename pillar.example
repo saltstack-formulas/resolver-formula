@@ -1,7 +1,9 @@
 resolver:
+  use_resolvconf: True # used to uninstall resolvconf and salt manage the config
   ng:
     resolvconf:
       enabled: False
+  domain: example.com
   nameservers:
     - 8.8.8.8
     - 8.8.4.4
