@@ -1,7 +1,7 @@
 {% from slspath + "/map.jinja" import resolver with context %}
 
 {{ sls }}~pkg:
-  {% if resolver.resolvconf.remove %}
+  {% if resolver.ng.resolvconf.remove %}
   pkg.purged:
   {% else %}
   pkg.installed:
@@ -12,7 +12,7 @@
 
 {{ sls }}~update-resolv.conf-file:
   file.managed:
-    {% if resolver.resolvconf.enabled and not resolver.resolvconf.remove %}
+    {% if resolver.ng.resolvconf.enabled and not resolver.ng.resolvconf.remove %}
     - name: /etc/resolvconf/resolv.conf.d/base
     {% else %}
     - name: /etc/resolv.conf
@@ -29,11 +29,11 @@
         options: {{ resolver.options }}
         domain: {{ resolver.domain }}
 
-{% if resolver.resolvconf.enabled and not resolver.resolvconf.remove %}
+{% if resolver.ng.resolvconf.enabled and not resolver.ng.resolvconf.remove %}
 {{ sls }}~update-resolvconf:
   file.symlink:
     - name: /etc/resolv.conf
-    - target: {{ resolver.resolvconf.file }}
+    - target: {{ resolver.ng.resolvconf.file }}
     - force: True
   cmd.run:
     - name: resolvconf -u

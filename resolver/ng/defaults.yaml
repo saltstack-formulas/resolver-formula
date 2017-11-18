@@ -1,8 +1,9 @@
 Defaults:
-  resolvconf:
-    enabled: False
-    remove: True
-    file: /run/resolvconf/resolv.conf
+  ng:
+    resolvconf:
+      enabled: False
+      remove: True
+      file: /run/resolvconf/resolv.conf
   nameservers:
     - 8.8.8.8
     - 8.8.4.4
@@ -12,12 +13,14 @@ Defaults:
 
 # os_family vars.
 Debian:
-  resolvconf:
-    enabled: True
-    remove: False
-    file: /etc/resolvconf/run/resolv.conf
+  ng:
+    resolvconf:
+      enabled: True
+      remove: False
+      file: /etc/resolvconf/run/resolv.conf
 
 # os vars.
 Ubuntu:
-  resolvconf:
-    file: ../run/resolvconf/resolv.conf
+  ng:
+    resolvconf:
+      file: ../run/resolvconf/resolv.conf
