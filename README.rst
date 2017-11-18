@@ -1,7 +1,7 @@
 ========
 resolver
 ========
-SaltStack formula to manage ``/etc/resolv.conf`` with or without ``resolvconf``.
+SaltStack formula to manage ``/etc/resolv.conf`` with or without ``resolvconf`` package.
 
 .. Note::
 
