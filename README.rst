@@ -30,12 +30,12 @@ Configuration
 The ``resolvconf`` package is enabled by default for Debian based distributions
 and you can manage ``/etc/resolv.conf`` directly without remove ``resolvconf`` package.
 
-
 .. code:: yaml
 
     resolver:
-      resolvconf:
-        enabled: False
+      ng:
+        resolvconf:
+          enabled: False
       nameservers:
         - 8.8.8.8
         - 8.8.4.4
