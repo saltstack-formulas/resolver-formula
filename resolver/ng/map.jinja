@@ -1,24 +1,28 @@
-{% import_yaml "resolver/ng/defaults.yaml" as cfg %}
+{% import_yaml 'resolver/ng/defaults.yaml' as defaultmap %}
+{% import_yaml 'resolver/ng/osfamilymap.yaml' as osfamilymap %}
+{% import_yaml 'resolver/ng/osmap.yaml' as osmap %}
 
-# Main defaults.
-{% set defaults = cfg.Defaults %}
-
-# os_family grain vars.
-{% set os_family_vars = salt['grains.filter_by'](
-    cfg,
-    grain='os_family',
+# Defaults.
+{% set defaults = salt['grains.filter_by'](
+    defaultmap,
+    base='Defaults',
 ) %}
 
-# os grain vars.
-{% set os_vars = salt['grains.filter_by'](
-    cfg,
-    grain='os',
+# Update with "os_family" grain vars.
+{% do salt['defaults.merge'](defaults,
+    salt['grains.filter_by'](
+        osfamilymap,
+        grain='os_family',
+    ) | default({}, True)
 ) %}
 
-# Update grains vars.
-{% for var in [os_family_vars, os_vars] %}
-    {% do salt['defaults.merge'](defaults, var|default({}, True)) %}
-{% endfor %}
+# Update with "os" grain vars.
+{% do salt['defaults.merge'](defaults,
+    salt['grains.filter_by'](
+        osmap,
+        grain='os',
+    ) | default({}, True)
+) %}
 
 # Update dynamic vars.
 {% do salt['defaults.merge'](defaults, {
@@ -27,7 +31,7 @@
 
 # Final var merged with pillar.
 {% set resolver = salt['pillar.get'](
-   'resolver',
-   default=defaults,
-   merge=True,
+    'resolver',
+    default=defaults,
+    merge=True,
 ) %}

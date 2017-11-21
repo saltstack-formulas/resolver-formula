@@ -10,17 +10,3 @@ Defaults:
   domain: ''
   searchpaths: []
   options: []
-
-# os_family vars.
-Debian:
-  ng:
-    resolvconf:
-      enabled: True
-      remove: False
-      file: /etc/resolvconf/run/resolv.conf
-
-# os vars.
-Ubuntu:
-  ng:
-    resolvconf:
-      file: ../run/resolvconf/resolv.conf
