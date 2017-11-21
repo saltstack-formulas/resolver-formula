@@ -8,21 +8,20 @@
     base='Defaults',
 ) %}
 
-# Update with "os_family" grain vars.
-{% do salt['defaults.merge'](defaults,
-    salt['grains.filter_by'](
-        osfamilymap,
-        grain='os_family',
-    ) | default({}, True)
-) %}
+# Update defaults with grains vars.
+{% set vars_map = [
+    ("os_family", osfamilymap),
+    ("os", osmap)
+] %}
 
-# Update with "os" grain vars.
-{% do salt['defaults.merge'](defaults,
-    salt['grains.filter_by'](
-        osmap,
-        grain='os',
-    ) | default({}, True)
-) %}
+{% for map_name, map_value in vars_map %}
+    {% do salt['defaults.merge'](defaults,
+        salt['grains.filter_by'](
+            map_value,
+            grain=map_name,
+        ) | default({}, True)
+    ) %}
+{% endfor %}
 
 # Update dynamic vars.
 {% do salt['defaults.merge'](defaults, {
