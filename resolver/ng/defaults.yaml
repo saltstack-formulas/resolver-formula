@@ -1,0 +1,12 @@
+Defaults:
+  ng:
+    resolvconf:
+      enabled: False
+      remove: True
+      file: /run/resolvconf/resolv.conf
+  nameservers:
+    - 8.8.8.8
+    - 8.8.4.4
+  domain: ''
+  searchpaths: []
+  options: []

@@ -1,0 +1,36 @@
+{% import_yaml 'resolver/ng/defaults.yaml' as defaultmap %}
+{% import_yaml 'resolver/ng/osfamilymap.yaml' as osfamilymap %}
+{% import_yaml 'resolver/ng/osmap.yaml' as osmap %}
+
+# Defaults.
+{% set defaults = salt['grains.filter_by'](
+    defaultmap,
+    base='Defaults',
+) %}
+
+# Update defaults with grains vars.
+{% set vars_map = [
+    ("os_family", osfamilymap),
+    ("os", osmap)
+] %}
+
+{% for map_name, map_value in vars_map %}
+    {% do salt['defaults.merge'](defaults,
+        salt['grains.filter_by'](
+            map_value,
+            grain=map_name,
+        ) | default({}, True)
+    ) %}
+{% endfor %}
+
+# Update dynamic vars.
+{% do salt['defaults.merge'](defaults, {
+    'domain': salt['grains.get']('domain')
+}) %}
+
+# Final var merged with pillar.
+{% set resolver = salt['pillar.get'](
+    'resolver',
+    default=defaults,
+    merge=True,
+) %}

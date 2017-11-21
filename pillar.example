@@ -1,13 +1,15 @@
 resolver:
   use_resolvconf: True # used to uninstall resolvconf and salt manage the config
+  ng:
+    resolvconf:
+      enabled: False
   domain: example.com
-  searchpaths:
-    - example.com
-    - example.org
   nameservers:
     - 8.8.8.8
-    - 4.4.4.4
+    - 8.8.4.4
+  searchpaths:
+    - example.com
   options:
-    - 'rotate'
-    - 'timeout:1'
-    - 'attempts:5'
+    - rotate
+    - timeout:1
+    - attempts:5

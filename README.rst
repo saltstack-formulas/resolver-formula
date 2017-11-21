@@ -1,32 +1,49 @@
+========
 resolver
 ========
+SaltStack formula to manage ``/etc/resolv.conf`` with or without ``resolvconf`` package.
 
-This SaltStack formula allows to update /etc/resolv.conf on minions.
-How to use it:
+.. Note::
 
-1. Add git fileserver backend to your master config:
+    See the full `Salt Formulas installation and usage instructions
+    <http://docs.saltstack.com/en/latest/topics/development/conventions/formulas.html>`_.
 
-.. code-block:: yaml
+Available states
+================
 
-  fileserver_backend:
-    - roots
-    - git
+.. contents::
+    :local:
 
-2. Add formula git URL to gitfs_remotes in your master config:
+``resolver``
+------------
 
-.. code-block:: yaml
+Manage system nameserver information in ``/etc/resolv.conf``.
 
-  gitfs_remotes:
-    - git+ssh://git@github.com/saltstack-formulas/resolver-formula.git
+``resolver.ng``
+------------
 
-3. Add a pillar with your configuration items
+A new formula to manage system nameserver information in ``/etc/resolv.conf``.
 
-.. code-block:: yaml
+Configuration
+=============
 
-  resolver:
-    searchpaths:
-      - example.com
-      - example.org
-    nameservers:
-      - 8.8.8.8
-      - 4.4.4.4
+The ``resolvconf`` package is enabled by default for Debian based distributions
+and you can manage ``/etc/resolv.conf`` directly without remove ``resolvconf`` package.
+
+.. code:: yaml
+
+    resolver:
+      ng:
+        resolvconf:
+          enabled: False
+      nameservers:
+        - 8.8.8.8
+        - 8.8.4.4
+      searchpaths:
+        - internal
+      options:
+        - rotate
+        - timeout:1
+        - attempts:5
+
+.. vim: fenc=utf-8 spell spl=en cc=100 tw=99 fo=want sts=4 sw=4 et
