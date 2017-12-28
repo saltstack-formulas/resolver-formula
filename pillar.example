@@ -3,6 +3,10 @@ resolver:
   ng:
     resolvconf:
       enabled: False
+    networkmanager:
+      # Disable DNS management in NetworkManager.
+      managed: True
+      file: /etc/NetworkManager/NetworkManager.conf
   domain: example.com
   nameservers:
     - 8.8.8.8
