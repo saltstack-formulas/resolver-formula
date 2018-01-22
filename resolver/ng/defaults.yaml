@@ -4,6 +4,13 @@ Defaults:
       enabled: False
       remove: True
       file: /run/resolvconf/resolv.conf
+    networkmanager:
+      # Will formula manage NetworkManager DNS?
+      managed: True
+      # Disable DNS management in NetworkManager.
+      dns: 'none'
+      file: /etc/NetworkManager/NetworkManager.conf
+      service: NetworkManager
   nameservers:
     - 8.8.8.8
     - 8.8.4.4

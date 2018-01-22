@@ -9,7 +9,9 @@ before_install:
 env:
   matrix:
     - INSTANCE: resolver-ng-ubuntu-1404
-    - INSTANCE: resolver-ng-centos-7
+    - INSTANCE: resolver-ng-centos-6
+    - INSTANCE: resolver-ng-ubuntu-1604-with-network-manager
+    - INSTANCE: resolver-ng-centos-7-with-network-manager
 
 script:
   - bundle exec kitchen verify ${INSTANCE}
