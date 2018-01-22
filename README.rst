@@ -31,6 +31,7 @@ The ``resolvconf`` package is enabled by default for Debian based distributions
 and you can manage ``/etc/resolv.conf`` directly without remove ``resolvconf`` package.
 
 NetworkManager, if enabled, will have it's ``DNS (resolv.conf) processing mode`` disabled.
+
 .. code:: yaml
 
     resolver:
