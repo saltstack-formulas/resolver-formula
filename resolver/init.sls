@@ -27,8 +27,8 @@ resolv-file:
     {% else %}
     - name: /etc/resolv.conf
     {% endif %}
-    - user: root
-    - group: root
+    - user: {{ resolver.user }}
+    - group: {{ resolver.group }}
     - mode: '0644'
     - source: salt://resolver/files/resolv.conf
     - template: jinja

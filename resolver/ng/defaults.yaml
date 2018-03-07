@@ -17,3 +17,5 @@ Defaults:
   domain: ''
   searchpaths: []
   options: []
+  user: root
+  group: root
