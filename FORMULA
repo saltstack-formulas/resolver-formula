@@ -1,0 +1,9 @@
+name: resolver
+os: Debian, Redhat, Suse, Arch, Gentoo, FreeBSD
+os_family: Debian, Redhat, Suse, Arch, Gentoo, FreeBSD
+version: 201801
+release: 1
+summary: SaltStack formula to manage /etc/resolv.conf with or without resolvconf package
+description: |
+  SaltStack formula to manage /etc/resolv.conf with or without resolvconf package
+  https://github.com/saltstack-formulas/resolver-formula
