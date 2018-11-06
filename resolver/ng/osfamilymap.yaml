@@ -5,3 +5,7 @@ Debian:
       enabled: True
       remove: False
       file: /etc/resolvconf/run/resolv.conf
+FreeBSD:
+  ng:
+    user: root
+    group: wheel
