@@ -18,8 +18,8 @@
     - name: /etc/resolv.conf
     - follow_symlinks: False
     {% endif %}
-    - user: root
-    - group: root
+    - user: {{ resolver.ng.user }}
+    - group: {{ resolver.ng.group }}
     - mode: '0644'
     - source: salt://{{ slspath }}/templates/resolv.conf.jinja
     - template: jinja

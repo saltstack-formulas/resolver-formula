@@ -1,5 +1,7 @@
 Defaults:
   ng:
+    user: root
+    group: root
     resolvconf:
       enabled: False
       remove: True
