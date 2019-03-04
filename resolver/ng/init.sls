@@ -24,10 +24,10 @@
     - source: salt://{{ slspath }}/templates/resolv.conf.jinja
     - template: jinja
     - defaults:
-        nameservers: {{ resolver.nameservers }}
-        searchpaths: {{ resolver.searchpaths }}
-        options: {{ resolver.options }}
-        domain: {{ resolver.domain }}
+        nameservers: {{ resolver.nameservers|yaml }}
+        searchpaths: {{ resolver.searchpaths|yaml }}
+        options: {{ resolver.options|yaml }}
+        domain: {{ resolver.domain|yaml }}
 
 {% if resolver.ng.resolvconf.enabled and not resolver.ng.resolvconf.remove %}
 {{ sls }}~update-resolvconf:
