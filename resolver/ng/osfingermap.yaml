@@ -15,3 +15,7 @@ Debian-11:
   ng:
     resolvconf:
       file: '/run/resolvconf/resolv.conf'
+Debian-12:
+  ng:
+    resolvconf:
+      file: '/run/resolvconf/resolv.conf'
