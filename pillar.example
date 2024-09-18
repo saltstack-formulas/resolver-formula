@@ -1,11 +1,12 @@
+---
 resolver:
-  use_resolvconf: True # used to uninstall resolvconf and salt manage the config
+  use_resolvconf: true  # used to uninstall resolvconf and salt manage the config
   ng:
     resolvconf:
-      enabled: False
+      enabled: false
     networkmanager:
       # Disable DNS management in NetworkManager.
-      managed: True
+      managed: true
       file: /etc/NetworkManager/NetworkManager.conf
   domain: example.com
   nameservers:

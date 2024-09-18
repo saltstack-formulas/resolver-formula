@@ -1,14 +1,15 @@
+---
 Defaults:
   ng:
     user: root
     group: root
     resolvconf:
-      enabled: False
-      remove: True
+      enabled: false
+      remove: true
       file: /run/resolvconf/resolv.conf
     networkmanager:
       # Will formula manage NetworkManager DNS?
-      managed: True
+      managed: true
       # Disable DNS management in NetworkManager.
       dns: 'none'
       file: /etc/NetworkManager/NetworkManager.conf
