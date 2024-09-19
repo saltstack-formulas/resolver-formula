@@ -11,7 +11,11 @@
 # osfingermap: {}
 ---
 # os: Debian
-Debian-11:
+Debian-9:
   ng:
     resolvconf:
-      file: '/run/resolvconf/resolv.conf'
+      file: /etc/resolvconf/run/resolv.conf
+Debian-10:
+  ng:
+    resolvconf:
+      file: /etc/resolvconf/run/resolv.conf

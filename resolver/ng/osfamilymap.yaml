@@ -5,7 +5,7 @@ Debian:
     resolvconf:
       enabled: true
       remove: false
-      file: /etc/resolvconf/run/resolv.conf
+      file: /run/resolvconf/resolv.conf
 FreeBSD:
   ng:
     user: root
