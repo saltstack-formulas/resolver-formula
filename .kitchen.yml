@@ -6,27 +6,31 @@ driver:
   require_chef_omnibus: false
 
 platforms:
-  - name: ubuntu-14.04
-  - name: centos-6
-  - name: ubuntu-16.04-with-network-manager
-    driver_config:
-      image: ubuntu:16.04
-      provision_command:
-        - 'echo "resolvconf resolvconf/linkify-resolvconf boolean false" | debconf-set-selections'
-        - apt-get update && apt-get install -y locales ifupdown network-manager
-        - locale-gen en_US.UTF-8
-        - update-locale LANG=en_US.UTF-8
+  # - name: ubuntu-14.04
+  # - name: centos-6
+  # - name: ubuntu-16.04-with-network-manager
+  #   driver_config:
+  #     image: ubuntu:16.04
+  #     provision_command:
+  #       - 'echo "resolvconf resolvconf/linkify-resolvconf boolean false" | debconf-set-selections'
+  #       - apt-get update && apt-get install -y locales ifupdown network-manager
+  #       - locale-gen en_US.UTF-8
+  #       - update-locale LANG=en_US.UTF-8
+  #     run_command: /lib/systemd/systemd
+  # - name: centos-7-with-network-manager
+  #   driver_config:
+  #     image: centos:7
+  #     provision_command:
+  #       - yum install NetworkManager -y
+  #     run_command: /usr/lib/systemd/systemd
+  - name: debian-11-master-py3
+    driver:
+      image: saltimages/salt-master-py3:debian-11
       run_command: /lib/systemd/systemd
-  - name: centos-7-with-network-manager
-    driver_config:
-      image: centos:7
-      provision_command:
-        - yum install NetworkManager -y
-      run_command: /usr/lib/systemd/systemd
 
 provisioner:
   name: salt_solo
-  #log_level: quiet
+  # log_level: quiet
   require_chef: false
   formula: resolver
 

@@ -1,6 +1,9 @@
+# -*- coding: utf-8 -*-
+# vim: ft=yaml
+---
 sudo: required
 language: python
-services: 
+services:
   - docker
 
 before_install:

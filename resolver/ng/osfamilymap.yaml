@@ -1,9 +1,10 @@
+---
 # os_family vars.
 Debian:
   ng:
     resolvconf:
-      enabled: True
-      remove: False
+      enabled: true
+      remove: false
       file: /etc/resolvconf/run/resolv.conf
 FreeBSD:
   ng:
